@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <title>Gubee Products</title>
+</head>
+<body>
+
+    <form action="" method="post">
+        <label>Pesquisa por nome:</label>
+        <input name="nomepesquisa">
+        <input type="submit" value="Buscar">
+    </form>
+
+    <section>
+        <div class="card shadow-sm bg-white rounded" style="margin-top: 20px" th:each="product : ${products}">
+            <div class="card-body">
+                <a href="#"><h2 class="card-title" style="font-weight: bold; color: black; padding-top: 5px;"><span th:text="${product.productName}"></span></h2></a>
+                <p class="card-subtitle mb-2 text-muted" style="font-size: 0.8rem;">
+                    <span th:text="${product.description}"></span>
+                </p>
+                <div>
+                    <h4>Mercado Alvo</h4>
+                    <ul th:each="tm : ${product.targetMarket}">
+                        <li th:text="${tm}"></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Tecnologias Utilizadas</h4>
+                    <ul th:each="stack : ${product.stack}">
+                        <li th:text="${stack}"></li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+</body>
+</html>
