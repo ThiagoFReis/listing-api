@@ -11,13 +11,13 @@
 
     <form action="search-by-target-market" method="post">
         <label>Filtrar por Mercado Alvo</label>
-        <input name="searchbytargetmarket">
+        <input class="input-group-text" name="searchbytargetmarket">
         <input type="submit" value="Buscar">
     </form>
 
     <form action="search-by-stack" method="post">
         <label>Filtrar por Tecnologias</label>
-        <input name="searchbystack">
+        <input class="input-group-text mb-2px" name="searchbystack">
         <input type="submit" value="Buscar">
     </form>
 
@@ -25,29 +25,29 @@
         <a href="/">Voltar para a página home</a>
     </div>
 
-    <section>
-        <div class="card shadow-sm bg-white rounded" style="margin-top: 20px" th:each="product : ${products}">
+    <div class="container">
+        <div class="card shadow-sm bg-white rounded column" style="margin-top: 20px" th:each="product : ${products}">
             <div class="card-body">
                 <h2 class="card-title" style="font-weight: bold; color: black; padding-top: 5px;"><span th:text="${product.productName}"></span></h2>
-                <p class="card-subtitle mb-2 text-muted" style="font-size: 0.8rem;">
+                <p class="card-subtitle mb-2 " style="font-size: 0.8rem;">
                     <span th:text="${product.description}"></span>
                 </p>
                 <div>
                     <h4>Mercado Alvo</h4>
-                    <ul th:each="tm : ${product.targetMarket}" id="TargetMarket">
-                        <li th:text="${tm}"></li>
+                    <ul class="list-group" th:each="tm : ${product.targetMarket}" id="TargetMarket">
+                        <li class="list-group-item" th:text="${tm}"></li>
                     </ul>
                 </div>
                 <div>
                     <h4>Tecnologias Utilizadas</h4>
-                    <ul th:each="stack : ${product.stack}">
-                        <li th:text="${stack}"></li>
+                    <ul class="list-group" th:each="stack : ${product.stack}">
+                        <li class="list-group-item" th:text="${stack}"></li>
                     </ul>
                 </div>
             </div>
 
         </div>
-    </section>
+    </div>
 
 </body>
 </html>
