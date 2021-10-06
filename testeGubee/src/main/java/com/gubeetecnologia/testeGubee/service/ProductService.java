@@ -23,4 +23,12 @@ public class ProductService {
         return product.get();
     }
 
+    public List<Product> findByTargetMarket(String targetMarket) {
+        return productRepository.findByTargetMarketContainingIgnoreCase(targetMarket);
+    }
+
+    public List<Product> findByStack(String stack) {
+        return productRepository.findByStackContainingIgnoreCase(stack);
+    }
+
 }

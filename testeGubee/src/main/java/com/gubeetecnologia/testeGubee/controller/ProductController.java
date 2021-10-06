@@ -15,6 +15,7 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
+
     @RequestMapping(value = "/products", method = RequestMethod.GET)
     public ModelAndView getProducts(){
         ModelAndView mv = new ModelAndView("products");
@@ -23,12 +24,22 @@ public class ProductController {
         return mv;
     }
 
-    @GetMapping
-    public ResponseEntity<List<Product>> findAll() {
-
-        List<Product> list = productService.findAll();
-        return ResponseEntity.ok().body(list);
+    @PostMapping("/search-by-target-market")
+    public ModelAndView filterTargetMarket(@RequestParam("searchbytargetmarket") String searchbytargetmarket) {
+        ModelAndView mv = new ModelAndView("/search-by-target-market");
+        mv.addObject("products", productService.findByTargetMarket(searchbytargetmarket));
+        return mv;
     }
+
+
+
+    @PostMapping("/search-by-stack")
+    public ModelAndView filterStack(@RequestParam("searchbystack") String searchbystack) {
+        ModelAndView mv = new ModelAndView("/search-by-stack");
+        mv.addObject("products", productService.findByStack(searchbystack));
+        return mv;
+    }
+
 
     @GetMapping(value = "/products/{id}")
     public ResponseEntity<Product> findById(@PathVariable String id) {

@@ -7,23 +7,37 @@
     <title>Gubee Products</title>
 </head>
 <body>
+    <div class="row justify-content-between">
+        <div class="row justify-content-start">
+            <form action="search-by-target-market" method="post">
+                <label>Filtrar por Mercado Alvo</label>
+                <input name="searchbytargetmarket">
+                <input type="submit" value="Buscar">
+            </form>
+        </div>
+        <div class="row justify-content-end">
+            <form action="search-by-stack" method="post">
+                <label>Filtrar por Tecnologias</label>
+                <input name="searchbystack">
+                <input type="submit" value="Buscar">
+            </form>
+        </div>
+    </div>
 
-    <form action="" method="post">
-        <label>Pesquisa por nome:</label>
-        <input name="nomepesquisa">
-        <input type="submit" value="Buscar">
-    </form>
+    <div>
+        <a href="/">Voltar para a página home</a>
+    </div>
 
     <section>
         <div class="card shadow-sm bg-white rounded" style="margin-top: 20px" th:each="product : ${products}">
             <div class="card-body">
-                <a href="#"><h2 class="card-title" style="font-weight: bold; color: black; padding-top: 5px;"><span th:text="${product.productName}"></span></h2></a>
+               <h2 class="card-title" style="font-weight: bold; color: black; padding-top: 5px;"><span th:text="${product.productName}"></span></h2>
                 <p class="card-subtitle mb-2 text-muted" style="font-size: 0.8rem;">
                     <span th:text="${product.description}"></span>
                 </p>
                 <div>
                     <h4>Mercado Alvo</h4>
-                    <ul th:each="tm : ${product.targetMarket}">
+                    <ul th:each="tm : ${product.targetMarket}" id="TargetMarket">
                         <li th:text="${tm}"></li>
                     </ul>
                 </div>
